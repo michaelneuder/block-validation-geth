@@ -2479,7 +2479,7 @@ func (bc *BlockChain) ValidatePayload(block *types.Block, feeRecipient common.Ad
 	if feeRecipientDiff.Cmp(expectedProfit) >= 0 {
 		return nil
 	}
-	log.Warn(fmt.Sprintf("fee recipient diff is negative %s, expected %s. checking for last transaction", feeRecipientDiff.String(), expectedProfit.String()))
+	log.Warn(fmt.Sprintf("fee recipient diff %s is less than expected %s. checking for last transaction", feeRecipientDiff.String(), expectedProfit.String()))
 
 	// Flashbots logic for last transaction checks.
 	if len(receipts) == 0 {
